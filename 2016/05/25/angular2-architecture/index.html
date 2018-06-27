@@ -5,37 +5,31 @@
   
   <title>Angular2 for Typescript官方文档翻译-语法基础-框架 | EivlysBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;lt;!-- MarkdownTOC --&amp;gt;
-&amp;lt;!-- /MarkdownTOC --&amp;gt;
-Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。
-我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root compo">
+  <meta name="description" content="Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。 我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root component作为Angular的启动加载器。 Angular在浏览器中接管，展示我们应">
+<meta name="keywords" content="Web Development,AngularJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular2 for Typescript官方文档翻译-语法基础-框架">
 <meta property="og:url" content="http://www.eivlysblog.com/2016/05/25/angular2-architecture/index.html">
 <meta property="og:site_name" content="EivlysBlog">
-<meta property="og:description" content="&amp;lt;!-- MarkdownTOC --&amp;gt;
-&amp;lt;!-- /MarkdownTOC --&amp;gt;
-Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。
-我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root compo">
+<meta property="og:description" content="Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。 我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root component作为Angular的启动加载器。 Angular在浏览器中接管，展示我们应">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.eivlysblog.com/img/angular-overview.png">
 <meta property="og:updated_time" content="2016-06-03T15:06:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2 for Typescript官方文档翻译-语法基础-框架">
-<meta name="twitter:description" content="&amp;lt;!-- MarkdownTOC --&amp;gt;
-&amp;lt;!-- /MarkdownTOC --&amp;gt;
-Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。
-我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root compo">
+<meta name="twitter:description" content="Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框架。框架由一些相互配合的库组成，其中一些库是核心的，一些是可选的。 我们用Angular形式的标记组成的HTML模板来写应用，通过component的类来管理这些模板，在service中添加应用的逻辑，并将顶层的root component作为Angular的启动加载器。 Angular在浏览器中接管，展示我们应">
+<meta name="twitter:image" content="http://www.eivlysblog.com/img/angular-overview.png">
   
   
     <link rel="icon" href="/favicon.png">
   
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
   
-    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+    <link rel="stylesheet" href="/scrollLoading/style.css">
   
   
 
@@ -46,7 +40,7 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
     <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
     <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -79,7 +73,7 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
             </ul>
             <nav id="sub-nav">
               <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.eivlysblog.com"></form>
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.eivlysblog.com"></form>
               </div>
             </nav>
           </div>
@@ -151,16 +145,16 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
 </ul>
 <h3 id="组件（Component）">组件（Component）</h3><p>组件控制屏幕上我们称之为视图的一块区域。应用根目录带链接的shell，heroes的列表、编辑器，其视图都是由组件控制的。</p>
 <p>定义组件的应用逻辑：在class中通过什么来控制视图。这个class通过属性和方法的接口与视图进行交互。</p>
-<p>比如例子中的 <em>HeroListConponent</em>，可能有一个从服务器获取并返回一个heroes数组的 <em>heroes</em> 属性。当用户从heroes列表中点击一个hero时，它可能有一个 <em>selectHero()</em> 方法来定义 <em>selectedHero</em> 属性。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroListComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="constructor"><span class="keyword">constructor</span>(private service: HeroService) </span>&#123; &#125;</span><br><span class="line">  heroes: Hero[];</span><br><span class="line">  selectedHero: Hero;</span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="keyword">this</span>.heroes = <span class="keyword">this</span>.service.getHeroes();</span><br><span class="line">  &#125;</span><br><span class="line">  selectHero(hero: Hero) &#123; <span class="keyword">this</span>.selectedHero = hero; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在用户使用应用的过程中，Angular会创建，更新，并销毁组件。开发者可选择性地根据<a href="https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html" target="_blank" rel="external">Lifecycle Hooks</a>对组件生命周期中的每一步进行操作。</p>
+<p>比如例子中的 <em>HeroListConponent</em>，可能有一个从服务器获取并返回一个heroes数组的 <em>heroes</em> 属性。当用户从heroes列表中点击一个hero时，它可能有一个 <em>selectHero()</em> 方法来定义 <em>selectedHero</em> 属性。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroListComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> service: HeroService</span>) &#123; &#125;</span><br><span class="line">  heroes: Hero[];</span><br><span class="line">  selectedHero: Hero;</span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="keyword">this</span>.heroes = <span class="keyword">this</span>.service.getHeroes();</span><br><span class="line">  &#125;</span><br><span class="line">  selectHero(hero: Hero) &#123; <span class="keyword">this</span>.selectedHero = hero; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在用户使用应用的过程中，Angular会创建，更新，并销毁组件。开发者可选择性地根据<a href="https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html" target="_blank" rel="noopener">Lifecycle Hooks</a>对组件生命周期中的每一步进行操作。</p>
 <p>我们或许会想知道谁在调用constructor？谁提供了服务参数？对于这些疑问，我们应该坚信当我们需要时，Angular会调用constructor并且传递一个合适的 <em>HeroService</em> 服务。</p>
-<h3 id="模板（Template）">模板（Template）</h3><p>我们通过与组件相匹配的模板来定义它的视图。模板以HTML的形式，指导Angular返回组件。<br>模板大部分看起来和普通的HTML一样，但又有些不一样。<em>HeroList</em> 组件的模板如下所示:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h2</span>&gt;</span>Hero List<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">i</span>&gt;</span>Pick a hero from the list<span class="tag">&lt;/<span class="title">i</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span> (<span class="attribute">click</span>)=<span class="value">"selectHero(hero)"</span>&gt;</span></span><br><span class="line">  &#123;&#123;hero.name&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span> [<span class="attribute">hero</span>]=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="模板（Template）">模板（Template）</h3><p>我们通过与组件相匹配的模板来定义它的视图。模板以HTML的形式，指导Angular返回组件。<br>模板大部分看起来和普通的HTML一样，但又有些不一样。<em>HeroList</em> 组件的模板如下所示:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hero List<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">i</span>&gt;</span>Pick a hero from the list<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let hero of heroes"</span> (<span class="attr">click</span>)=<span class="string">"selectHero(hero)"</span>&gt;</span></span><br><span class="line">  &#123;&#123;hero.name&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hero-detail</span> *<span class="attr">ngIf</span>=<span class="string">"selectedHero"</span> [<span class="attr">hero</span>]=<span class="string">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="name">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>我们认识<code>&lt;H2&gt;</code>和<code>&lt;div&gt;</code>，但有一个标记我们不认识，比如<code>*ngFor</code>, <code></code>, <code>(click)</code>, <code>[hero]</code>, 和 <code>&lt;hero-detail&gt;</code>。这些是Angular模板语法的例子。我们可能会逐渐习惯于这种语法，甚至喜欢上这种语法。后续将详细解释。</p>
 <p>在我们开始之前，重点看下上面例子中的最后一行，<code>&lt;hero-detail&gt;</code>是一个代表<em>HeroDetailComponent</em>自定义的元素。</p>
 <p><em>HeroDetailComponent</em>是一个有别于之前看的<em>HeroListComponent</em>的组件。<em>HeroDetailComponent</em>展示了某一个英雄的实际情况，这个英雄正是用户从<em>HeroListComponent</em>表示的列表中选出来的英雄。<em>HeroDetailComponent</em>是<em>HeroListComponent</em>的子级。</p>
 <p>注意<code>&lt;hero-detail&gt;</code>是如何毫无违和感地嵌入到我们熟知的HTML代码中的。我们可以把自定义元素与HTML自己的元素在布局中混合使用。</p>
 <p>通过这种方式，我们可以将层级复杂的组件构建成丰富多彩的应用。</p>
-<h3 id="元数据（Metadata）">元数据（Metadata）</h3><p>元数据告诉Angular如何运行一个类（class）。<br>回顾<em>HeroListComponent</em>组件，我们可以看到它只有一个类，没有框架或者”Angular”。实际上，它真的只是一个类。在传递给Angular之前它都不是一个组件。我们通过在类中附加元数据告诉Angular这是一个组件：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector:    <span class="string">'hero-list'</span>,</span><br><span class="line">  templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">  directives:  [HeroDetailComponent],</span><br><span class="line">  providers:   [HeroService]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroesComponent &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="元数据（Metadata）">元数据（Metadata）</h3><p>元数据告诉Angular如何运行一个类（class）。<br>回顾<em>HeroListComponent</em>组件，我们可以看到它只有一个类，没有框架或者”Angular”。实际上，它真的只是一个类。在传递给Angular之前它都不是一个组件。我们通过在类中附加元数据告诉Angular这是一个组件：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector:    <span class="string">'hero-list'</span>,</span><br><span class="line">  templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">  directives:  [HeroDetailComponent],</span><br><span class="line">  providers:   [HeroService]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroesComponent &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>@Component</code>修饰符将它下面的那个类识别为组件的类。<br>一个修饰符就是一个方法。</p>
 
       </div>
@@ -232,7 +226,7 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -242,7 +236,7 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -252,7 +246,7 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -309,16 +303,16 @@ Angular2是一个帮助我们使用HTML和Javascript搭建客户端应用的框�
 
 
 
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
-  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
-  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
 
 
-<script src="/js/html-patch.js" type="text/javascript"></script>
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>
