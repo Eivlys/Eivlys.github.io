@@ -105,6 +105,80 @@
   <article class="article article-summary">
     <div class="article-summary-inner">
       
+<a href="/2018/07/04/node-filesys/" class="thumbnail">
+  
+    <span style="background-image:url(/img/nodejs-file.jpg
+)" alt="NodeJS-文件读写增删监听操作" class="thumbnail-image"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/Code/">Code</a></p>
+        <p class="date"><time datetime="2018-07-04T06:20:19.000Z" itemprop="datePublished">2018-07-04</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2018/07/04/node-filesys/" class="title">NodeJS-文件读写增删监听操作</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        
+基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入
+const fs = require('fs');
+所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。
+当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。
+try {
+      </p>
+    </div>
+  </article>
+
+    
+  
+    
+    
+    
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
+<a href="/2018/06/30/GCP-env-initiate/" class="thumbnail">
+  
+    <span style="background-image:url(/img/gcp-init.png
+)" alt="GCP配置及初级使用" class="thumbnail-image"></span>
+  
+</a>
+
+      <div class="article-meta">
+        <p class="category"><a class="article-category-link" href="/categories/Code/">Code</a></p>
+        <p class="date"><time datetime="2018-06-30T08:07:18.000Z" itemprop="datePublished">2018-06-30</time></p>
+      </div>
+      <h2 class="article-title">
+        <a href="/2018/06/30/GCP-env-initiate/" class="title">GCP配置及初级使用</a>
+      </h2>
+      <p class="article-excerpt">
+        
+        
+通过代理服务器连接GCP
+本地配置.bash_profit 文件中添加环境变量：export = http_proxy = [代理服务器地址:端口]  export = http_proxy = 127.0.0.1:1087  export = https_proxy = 127.0.0.1:1087
+GCP配置：gcloud config set proxy/type PROXY_TYPE （
+      </p>
+    </div>
+  </article>
+
+    
+      </div>
+    
+  
+    
+    
+    
+    
+      <div class="article-row">
+    
+        
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+      
 <a href="/2018/06/27/node-install/" class="thumbnail">
   
     <span style="background-image:url(/img/node-install.jpeg
@@ -122,13 +196,10 @@
       <p class="article-excerpt">
         
         
-在从未搭建过node环境的电脑上安装brew install node
-使用国内镜像比较快，或者去官网下载包根据提示安装也很方便
-安装完成node -v
-看下是否安装成功，如果安装成功会显示版本号
-如果报错（文件夹不存在或指令错误等），需要手动配置PATH
-
-配置PATHvim .bash_profilei 进入编辑模式添加语句 export PATH=’$PATH:/usr/local/bin
+在从未搭建过node环境的电脑上安装先安装nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash
+或者   
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas
       </p>
     </div>
   </article>
@@ -242,7 +313,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -252,7 +323,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GCP/">GCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -262,7 +333,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -272,7 +343,7 @@
   <div class="widget-wrap widget-float">
     <h3 class="widget-title">tag cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
+      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/NodeJS/" style="font-size: 13.33px;">NodeJS</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
     </div>
   </div>
 

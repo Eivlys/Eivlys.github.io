@@ -5,19 +5,19 @@
   
   <title>Node在Mac系统中安装升级卸载及终极处理 | EivlysBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在从未搭建过node环境的电脑上安装brew install node 使用国内镜像比较快，或者去官网下载包根据提示安装也很方便 安装完成node -v 看下是否安装成功，如果安装成功会显示版本号 如果报错（文件夹不存在或指令错误等），需要手动配置PATH  配置PATHvim .bash_profilei 进入编辑模式添加语句 export PATH=’$PATH:/usr/local/bin">
-<meta name="keywords" content="Web Development">
+  <meta name="description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
+<meta name="keywords" content="Web Development,NodeJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node在Mac系统中安装升级卸载及终极处理">
 <meta property="og:url" content="http://www.eivlysblog.com/2018/06/27/node-install/index.html">
 <meta property="og:site_name" content="EivlysBlog">
-<meta property="og:description" content="在从未搭建过node环境的电脑上安装brew install node 使用国内镜像比较快，或者去官网下载包根据提示安装也很方便 安装完成node -v 看下是否安装成功，如果安装成功会显示版本号 如果报错（文件夹不存在或指令错误等），需要手动配置PATH  配置PATHvim .bash_profilei 进入编辑模式添加语句 export PATH=’$PATH:/usr/local/bin">
+<meta property="og:description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.eivlysblog.com/img/node-install.jpeg">
-<meta property="og:updated_time" content="2018-06-27T15:45:30.686Z">
+<meta property="og:updated_time" content="2018-07-04T16:42:06.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node在Mac系统中安装升级卸载及终极处理">
-<meta name="twitter:description" content="在从未搭建过node环境的电脑上安装brew install node 使用国内镜像比较快，或者去官网下载包根据提示安装也很方便 安装完成node -v 看下是否安装成功，如果安装成功会显示版本号 如果报错（文件夹不存在或指令错误等），需要手动配置PATH  配置PATHvim .bash_profilei 进入编辑模式添加语句 export PATH=’$PATH:/usr/local/bin">
+<meta name="twitter:description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
 <meta name="twitter:image" content="http://www.eivlysblog.com/img/node-install.jpeg">
   
   
@@ -113,7 +113,18 @@
       </p>
       <div class="article-entry" itemprop="articleBody">
         <p><img src="/img/node-install.jpeg" alt="NodeJS"></p>
-<h3 id="在从未搭建过node环境的电脑上安装">在从未搭建过node环境的电脑上安装</h3><pre><code><span class="keyword">brew </span>install node
+<h3 id="在从未搭建过node环境的电脑上安装">在从未搭建过node环境的电脑上安装</h3><p>先安装nvm</p>
+<pre><code>curl -<span class="keyword">o</span>- http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/creationix/nvm/v0.<span class="number">33.11</span> install.<span class="keyword">sh</span>| bash
+</code></pre><p>或者   </p>
+<pre><code>wget -qO- http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/creationix/nvm/v0.<span class="number">33.11</span>/Pinstall.<span class="keyword">sh</span>| bash
+</code></pre><p>重启终端（终端每次启动时检查node环境），输入</p>
+<pre><code><span class="command"><span class="keyword">command</span> -<span class="title">v</span> <span class="title">nvm</span></span>
+</code></pre><p>输出 nvm说明安装成功</p>
+<p>接下来安装node（npm会一起装上）</p>
+<pre><code>nvm <span class="operator"><span class="keyword">install</span> stable
+nvm <span class="keyword">alias</span> <span class="keyword">default</span> stable</span>
+</code></pre><p>如果装了brew</p>
+<pre><code><span class="keyword">brew </span>install node
 </code></pre><p>使用国内镜像比较快，或者去官网下载包根据提示安装也很方便</p>
 <h3 id="安装完成">安装完成</h3><pre><code><span class="title">node</span> -v
 </code></pre><p>看下是否安装成功，如果安装成功会显示版本号</p>
@@ -140,7 +151,7 @@
           <a href="http://www.eivlysblog.com/2018/06/27/node-install/#comments" class="article-comment-link"><i class="fa fa-comments"></i>Comments</a>
         
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Development/">Web Development</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Development/">Web Development</a></li></ul>
 
       </footer>
     </div>
@@ -176,6 +187,16 @@
     
 <nav id="article-nav">
   
+    <a href="/2018/06/30/GCP-env-initiate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          GCP配置及初级使用
+        
+      </p>
+      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+  
   
     <a href="/2018/05/13/es6-module/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
@@ -192,7 +213,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -202,7 +223,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GCP/">GCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -212,7 +233,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -222,7 +243,7 @@
   <div class="widget-wrap widget-float">
     <h3 class="widget-title">tag cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
+      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/NodeJS/" style="font-size: 13.33px;">NodeJS</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
     </div>
   </div>
 

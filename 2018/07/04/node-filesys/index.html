@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>NodeJS-文件读写增删监听操作 | EivlysBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+<meta name="keywords" content="Web Development,NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS-文件读写增删监听操作">
+<meta property="og:url" content="http://www.eivlysblog.com/2018/07/04/node-filesys/index.html">
+<meta property="og:site_name" content="EivlysBlog">
+<meta property="og:description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.eivlysblog.com/img/nodejs-file.jpg">
+<meta property="og:updated_time" content="2018-07-04T16:42:01.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJS-文件读写增删监听操作">
+<meta name="twitter:description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+<meta name="twitter:image" content="http://www.eivlysblog.com/img/nodejs-file.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design · Coding · Ideas</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Code/">Code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IxD/">IxD</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.eivlysblog.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Code/">Code</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-node-filesys" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      NodeJS-文件读写增删监听操作
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2018/07/04/node-filesys/" class="article-date">
+  <time datetime="2018-07-04T06:20:19.000Z" itemprop="datePublished">2018-07-04</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="/img/nodejs-file.jpg" alt="NodeJS-File"></p>
+<h3 id="基本用法">基本用法</h3><p>fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入</p>
+<pre><code><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
+</code></pre><p>所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。</p>
+<p>当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。</p>
+<pre><code><span class="keyword">try</span> {
+    fs.unlinkSync(<span class="string">'/tmp/hello'</span>);
+    <span class="built_in">console</span>.log(<span class="string">'successfully deleted /tmp/hello'</span>);
+} <span class="keyword">catch</span> (err) {
+<span class="comment">// handle the error</span>
+}
+</code></pre><p>异步的方法不能保证执行顺序，因此建议把后执行的方法放进回调里</p>
+<pre><code>fs.rename(<span class="string">'/tmp/hello'</span>, <span class="string">'/tmp/world'</span>, <span class="function"><span class="params">(err)</span> =&gt;</span> {
+    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+    fs.stat(<span class="string">'/tmp/world'</span>, <span class="function"><span class="params">(err, stats)</span> =&gt;</span> {
+        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+        <span class="built_in">console</span>.log(`<span class="javascript">文件属性: ${<span class="built_in">JSON</span>.stringify(stats)}</span>`);
+    });
+});
+</code></pre><p>在繁忙的进程中，建议使用函数的异步版本。 同步的方法会阻塞整个进程，直到完成。</p>
+<h3 id="文件读取">文件读取</h3><p><em>fs.readFile(path[, options], callback) 读取文件的全部内容</em></p>
+<pre><code>fs.readFile(<span class="string">'/etc/passwd'</span>, <span class="function"><span class="params">(err, data)</span> =&gt;</span> {
+    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+    <span class="built_in">console</span>.log(data);
+});
+</code></pre><p>由于readFile的执行机制是直接写入整个文件，对于数据量小的文件可以使用，对于大的文件建议使用fs.createReadStream，通过数据流一点一点读取而不是整个读取，使用过的部分会被回收，占用内存小。</p>
+<p><em>fs.ReadStream 类：fs.createReadStream(path, options)</em> </p>
+<pre><code>const fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
+let path = <span class="string">'&lt;文件名&gt;'</span>;
+let options = {
+    <span class="attribute">encoding</span>: <span class="string">'utf8'</span>,
+};
+let readable = fs.createReadStream(path, options);
+readable.<span class="literal">on</span>(<span class="string">'error'</span>, <span class="function"><span class="params">(err)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'发生异常:'</span>, err);
+});
+readable.<span class="literal">on</span>(<span class="string">'open'</span>, <span class="function"><span class="params">(fd)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'文件已打开:'</span>, fd);
+});
+readable.<span class="literal">on</span>(<span class="string">'ready'</span>, <span class="function"><span class="params">()</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'文件已准备好..'</span>);
+});
+readable.<span class="literal">on</span>(<span class="string">'data'</span>, <span class="function"><span class="params">(chunk)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'读取文件数据:'</span>, chunk);
+});
+readable.<span class="literal">on</span>(<span class="string">'end'</span>, <span class="function"><span class="params">()</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'读取已完成..'</span>);
+});
+readable.<span class="literal">on</span>(<span class="string">'close'</span>, <span class="function"><span class="params">()</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'文件已关闭！'</span>);
+});
+</code></pre><p>其中open，ready等为底层事件，当读取文件时，执行顺序为：open → ready → end → close，使用时可以直接调用fs.createReadStream();</p>
+<p><em>读取的是buffer而不是文件</em><br>fs.read(fd, buffer, offset, length, position, callback)</p>
+<h3 id="文件写入">文件写入</h3><p><em>fs.writeFile(file, data[, options], callback) 写入文件全部内容</em></p>
+<pre><code>fs.writeFile(<span class="string">'文件名.txt'</span>, <span class="string">'Node.js 中文网'</span>, <span class="function"><span class="params">(err)</span> =&gt;</span> {
+    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+    <span class="built_in">console</span>.log(<span class="string">'文件已保存！'</span>);
+});
+</code></pre><p>类似readFile，大文件建议使用fs.createWriteStream</p>
+<p><em>fs.WriteStream 类：fs.createWriteStream(path, options)</em></p>
+<pre><code>const fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
+let path = <span class="string">'&lt;文件名&gt;'</span>;
+let options;
+let writable = fs.createWriteStream(path, options);
+writable.<span class="literal">on</span>(<span class="string">'error'</span>, <span class="function"><span class="params">(err)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'发生异常:'</span>, err);
+});
+writable.<span class="literal">on</span>(<span class="string">'open'</span>, <span class="function"><span class="params">(fd)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'文件已打开:'</span>, fd);
+});
+writable.<span class="literal">on</span>(<span class="string">'finish'</span>, <span class="function"><span class="params">()</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'写入已完成..'</span>); 
+});
+writable.<span class="literal">on</span>(<span class="string">'close'</span>, <span class="function"><span class="params">()</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(<span class="string">'文件已关闭！'</span>);
+    <span class="built_in">console</span>.log(<span class="string">'读取文件内容:'</span>, fs.readFileSync(path, <span class="string">'utf8'</span>));
+});
+writable.write(<span class="string">'&lt;文件内容&gt;'</span>);
+writable.end();
+</code></pre><p>写入时已有内容会被覆盖，可以通过指定options中的flag属性向文件尾部追加数据</p>
+<pre><code><span class="keyword">let</span> options = {
+    flags: <span class="string">'a'</span>,
+};
+</code></pre><p><em>写入的是buffer而不是文件</em><br>fs.read(fd, buffer, offset, length, position, callback)</p>
+<p><em>大文件读写操作- pipe()</em><br>pipe类似于文件传输的通道</p>
+<pre><code><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);
+<span class="keyword">let</span> readerStream = fs.createReadStream(<span class="string">'input.txt'</span>);
+<span class="keyword">let</span> writerStream = fs.createWriteStream(<span class="string">'output.txt'</span>);
+readerStream.pipe(writerStream);
+<span class="comment">// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中</span>
+</code></pre><h3 id="获取文件信息">获取文件信息</h3><p>fs.Stats 类：fs.stat()，获取文件大小，创建时间等，<a href="http://nodejs.cn/api/fs.html#fs_class_fs_stats" target="_blank" rel="noopener">详见</a>。</p>
+<h3 id="删除文件">删除文件</h3><p>fs.unlink(path)</p>
+<h3 id="创建文件">创建文件</h3><p>fs貌似没有专门的新增文件操作，但是在两种情况下可以创建文件（与其说创建文件，其实更贴近错误处理机制）</p>
+<ul>
+<li>使用fs.open()打开文件时，设置flags的值为’w’，即以写入模式打开文件，文件会被创建（如果文件不存在）或截断（如果文件存在）；或者设置为’a’，以追加模式打开文件。如果文件不存在，则会被创建。</li>
+<li>使用fs.appendFile()追加数据到文件时，如果文件不存在则会创建文件。</li>
+</ul>
+<h3 id="监听">监听</h3><p>fs.watch(filename[, options][, listener])<br>fs.watchFile(filename[, options], listener)<br>fs.unwatchFile(filename[, options], listener)<br>fs.watch比 fs.watchFile 和 fs.unwatchFile 更高效。 可能的话，应该使用 fs.watch 而不是 fs.watchFile 和 fs.unwatchFile。</p>
+<pre><code>fs.watch(<span class="string">'somedir'</span>, <span class="function"><span class="params">(eventType, filename)</span> =&gt;</span> {
+    <span class="built_in">console</span>.log(`<span class="javascript">事件类型是: ${eventType}</span>`);
+    <span class="keyword">if</span> (filename) {
+        <span class="built_in">console</span>.log(`<span class="javascript">提供的文件名: ${filename}</span>`);
+    } <span class="keyword">else</span> {
+        <span class="built_in">console</span>.log(<span class="string">'未提供文件名'</span>);
+    }
+});
+</code></pre><p>参考文档<a href="http://nodejs.cn/api/fs.html" target="_blank" rel="noopener">NodeJS-FileSystem</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.eivlysblog.com/2018/07/04/node-filesys/" data-id="cjj7cfct50001senylxf4se6i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        
+          <a href="http://www.eivlysblog.com/2018/07/04/node-filesys/#comments" class="article-comment-link"><i class="fa fa-comments"></i>Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Development/">Web Development</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/Eivlys" target="_blank"><i class="icon fa fa-github"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/u/1898548721" target="_blank"><i class="icon fa fa-weibo"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google-plus" href="https://plus.google.com/u/0/106632066575977183873/about" target="_blank"><i class="icon fa fa-google-plus"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/vamcheryl" target="_blank"><i class="icon fa fa-twitter"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/30/GCP-env-initiate/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">GCP配置及初级使用</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GCP/">GCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/NodeJS/" style="font-size: 13.33px;">NodeJS</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 Eivlys</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'eivlysblog';
+  
+  var disqus_url = 'http://www.eivlysblog.com/2018/07/04/node-filesys/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
