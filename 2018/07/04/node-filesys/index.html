@@ -5,19 +5,19 @@
   
   <title>NodeJS-文件读写增删监听操作 | EivlysBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+  <meta name="description" content="所有用法demo见nodejs-file-system-demo 基本用法fs为node内置的模块，用于处理文件/数据流，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常">
 <meta name="keywords" content="Web Development,NodeJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJS-文件读写增删监听操作">
 <meta property="og:url" content="http://www.eivlysblog.com/2018/07/04/node-filesys/index.html">
 <meta property="og:site_name" content="EivlysBlog">
-<meta property="og:description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+<meta property="og:description" content="所有用法demo见nodejs-file-system-demo 基本用法fs为node内置的模块，用于处理文件/数据流，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.eivlysblog.com/img/nodejs-file.jpg">
-<meta property="og:updated_time" content="2018-07-04T16:42:01.772Z">
+<meta property="og:updated_time" content="2018-07-06T06:21:21.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJS-文件读写增删监听操作">
-<meta name="twitter:description" content="基本用法fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。 try {">
+<meta name="twitter:description" content="所有用法demo见nodejs-file-system-demo 基本用法fs为node内置的模块，用于处理文件/数据流，目前功能已经稳定，在js中调用时需要先引入 const fs = require(&apos;fs&apos;); 所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。 当使用同步操作时，任何异常">
 <meta name="twitter:image" content="http://www.eivlysblog.com/img/nodejs-file.jpg">
   
   
@@ -113,7 +113,8 @@
       </p>
       <div class="article-entry" itemprop="articleBody">
         <p><img src="/img/nodejs-file.jpg" alt="NodeJS-File"></p>
-<h3 id="基本用法">基本用法</h3><p>fs为node内置的模块，目前功能已经稳定，在js中调用时需要先引入</p>
+<p>所有用法demo见<a href="https://github.com/Eivlys/nodejs-file-system-demo" target="_blank" rel="noopener">nodejs-file-system-demo</a></p>
+<h3 id="基本用法">基本用法</h3><p>fs为node内置的模块，用于处理文件/数据流，目前功能已经稳定，在js中调用时需要先引入</p>
 <pre><code><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
 </code></pre><p>所有的文件系统操作都有异步和同步两种形式，同步的方法名称中带有Sync后缀，如：fs.unlinkSync()(同步) 和 fs.unlink(异步)。</p>
 <p>当使用同步操作时，任何异常都会被立即抛出，建议使用 try/catch 来处理异常，或让异常向上冒泡。</p>
