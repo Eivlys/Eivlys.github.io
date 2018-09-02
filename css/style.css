@@ -328,6 +328,10 @@ body {
   background: #121314;
   padding-bottom: 60px;
   position: relative;
+  background-image: url("images/header-banner.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
 }
 #header-outer {
   height: 100%;
