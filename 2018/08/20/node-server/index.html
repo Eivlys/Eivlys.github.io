@@ -3,22 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Node在Mac系统中安装升级卸载及终极处理 | EivlysBlog</title>
+  <title>NodeJS在服务端的实际应用及问题处理 | EivlysBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
+  <meta name="description" content="使用可使用的插件“dependencies”: {    “express”: “~4.2.0”,  //NodeJS webapp 框架    “body-parser”: “~1.0.0”, //开发中间件的插件    “jsonwebtoken”: “~5.4.0”, //用户安全性验证 框架    “ejs”: “~0.8.5”, //客户端模板语言    “sequelize”: “~3">
 <meta name="keywords" content="Web Development,NodeJS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node在Mac系统中安装升级卸载及终极处理">
-<meta property="og:url" content="http://www.eivlysblog.com/2018/06/27/node-install/index.html">
+<meta property="og:title" content="NodeJS在服务端的实际应用及问题处理">
+<meta property="og:url" content="http://www.eivlysblog.com/2018/08/20/node-server/index.html">
 <meta property="og:site_name" content="EivlysBlog">
-<meta property="og:description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
+<meta property="og:description" content="使用可使用的插件“dependencies”: {    “express”: “~4.2.0”,  //NodeJS webapp 框架    “body-parser”: “~1.0.0”, //开发中间件的插件    “jsonwebtoken”: “~5.4.0”, //用户安全性验证 框架    “ejs”: “~0.8.5”, //客户端模板语言    “sequelize”: “~3">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://www.eivlysblog.com/img/node-install.jpeg">
-<meta property="og:updated_time" content="2018-07-04T16:42:06.037Z">
+<meta property="og:updated_time" content="2018-09-01T15:48:36.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node在Mac系统中安装升级卸载及终极处理">
-<meta name="twitter:description" content="在从未搭建过node环境的电脑上安装先安装nvm curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11 install.sh| bash 或者    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/Pinstall.sh| bas">
-<meta name="twitter:image" content="http://www.eivlysblog.com/img/node-install.jpeg">
+<meta name="twitter:title" content="NodeJS在服务端的实际应用及问题处理">
+<meta name="twitter:description" content="使用可使用的插件“dependencies”: {    “express”: “~4.2.0”,  //NodeJS webapp 框架    “body-parser”: “~1.0.0”, //开发中间件的插件    “jsonwebtoken”: “~5.4.0”, //用户安全性验证 框架    “ejs”: “~0.8.5”, //客户端模板语言    “sequelize”: “~3">
   
   
     <link rel="icon" href="/favicon.png">
@@ -92,7 +90,7 @@
             </div>
             <div class="main-body-content">
               
-  <article id="post-node-install" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="post-node-server" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -100,55 +98,42 @@
           
   
     <h1 class="article-title" itemprop="name">
-      Node在Mac系统中安装升级卸载及终极处理
+      NodeJS在服务端的实际应用及问题处理
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/2018/06/27/node-install/" class="article-date">
-  <time datetime="2018-06-27T02:35:16.000Z" itemprop="datePublished">2018-06-27</time>
+        <a href="/2018/08/20/node-server/" class="article-date">
+  <time datetime="2018-08-20T14:30:26.000Z" itemprop="datePublished">2018-08-20</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p><img src="/img/node-install.jpeg" alt="NodeJS"></p>
-<h3 id="在从未搭建过node环境的电脑上安装">在从未搭建过node环境的电脑上安装</h3><p>先安装nvm</p>
-<pre><code>curl -<span class="keyword">o</span>- http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/creationix/nvm/v0.<span class="number">33.11</span> install.<span class="keyword">sh</span>| bash
-</code></pre><p>或者   </p>
-<pre><code>wget -qO- http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/creationix/nvm/v0.<span class="number">33.11</span>/Pinstall.<span class="keyword">sh</span>| bash
-</code></pre><p>重启终端（终端每次启动时检查node环境），输入</p>
-<pre><code><span class="command"><span class="keyword">command</span> -<span class="title">v</span> <span class="title">nvm</span></span>
-</code></pre><p>输出 nvm说明安装成功</p>
-<p>接下来安装node（npm会一起装上）</p>
-<pre><code>nvm <span class="operator"><span class="keyword">install</span> stable
-nvm <span class="keyword">alias</span> <span class="keyword">default</span> stable</span>
-</code></pre><p>如果装了brew</p>
-<pre><code><span class="keyword">brew </span>install node
-</code></pre><p>使用国内镜像比较快，或者去官网下载包根据提示安装也很方便</p>
-<h3 id="安装完成">安装完成</h3><pre><code><span class="title">node</span> -v
-</code></pre><p>看下是否安装成功，如果安装成功会显示版本号</p>
-<p>如果报错（文件夹不存在或指令错误等），需要手动配置PATH</p>
-<ul>
-<li>配置PATH<br>vim .bash_profile<br>i 进入编辑模式<br>添加语句 export PATH=’$PATH:/usr/local/bin/‘<br>因为node默认安装在/usr/local/bin/<br>:wq 保存并退出，立即生效<br>再试一下 node -v</li>
-</ul>
-<h3 id="升级">升级</h3><pre><code>sudo <span class="built_in">npm</span> -g install <span class="built_in">npm</span>@版本号
-</code></pre><p>node -v查看是否升级成功</p>
-<ul>
-<li><p>未成功升级到指定版本，试试手动选择默认版本<br>nvm ls 浏览列出的所有版本<br>nvm use 8.11.3  指定版本号<br>nvm alias default 8.11.3  设置默认版本<br><em>重新打开终端</em> node -v</p>
-</li>
-<li><p>如果npm升级失败，没有可选的最新版本，使用n来做升级（不会成功的）<br>sudo npm install -g n<br>sudo n stable<br>如果版本号没有更新且nvm ls没有列出可选的版本，那就卸载重装吧</p>
-</li>
-</ul>
-<h3 id="卸载（并没有想象的简单）">卸载（并没有想象的简单）</h3><p>先试试<br>    brew uninstall node<br>    node -v<br>发现node命令还能执行，试试手动删除<br>    find . -name “node”<br>    find . -name “npm”<br>找到所有相关文件夹<br>    rm -rf 路径<br>简单暴力</p>
-<p>删完之后check一下是不是所有文件都清理干净了，再试试<br>    node<br>找不到命令报错了，开心，重回第一步 <em>在从未搭建过node环境的电脑上安装</em></p>
-<p>Node环境搭建就是一场循环<br>反正我是不会去升级公司电脑的</p>
+        <h3 id="使用">使用</h3><p><strong>可使用的插件</strong><br>“dependencies”: {<br>    “express”: “~4.2.0”,  //NodeJS webapp 框架<br>    “body-parser”: “~1.0.0”, //开发中间件的插件<br>    “jsonwebtoken”: “~5.4.0”, //用户安全性验证 框架<br>    “ejs”: “~0.8.5”, //客户端模板语言<br>    “sequelize”: “~3.5.0”, // nodeJS ORM 框架<br>    “mysql”: “~2.0.0”,<br>    “bluebird”: “~2.10.2”,  //Promise语法<br>    “log4js”: “~0.6.0”,//打log<br>    “formidable”: “~1.0.17”<br>},</p>
+<p><strong>wampserver apache设置跨域访问</strong><br><a href="http://www.mamicode.com/info-detail-247002.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-247002.html</a> （可行）<br><a href="https://gist.github.com/hoandang/8066175" target="_blank" rel="noopener">https://gist.github.com/hoandang/8066175</a> （参考）<br><a href="http://blog.csdn.net/linxiangyao/article/details/6107617" target="_blank" rel="noopener">http://blog.csdn.net/linxiangyao/article/details/6107617</a> （参考）</p>
+<p><strong>Sequelize</strong><br>Sequelize语法<br>在函数中获取当前时间： sequelize.fn(‘NOW’);<br>修改时区：var sequelize = new Sequelize(… timezone: ‘+08:00’ );<br>Sequelize-Querying: <a href="http://sequelize.readthedocs.io/en/latest/docs/querying/" target="_blank" rel="noopener">http://sequelize.readthedocs.io/en/latest/docs/querying/</a><br>注：建立完模型后调用sync()在数据库自动建表及对应关系</p>
+<p>sequelize-分组计算，通常用于计算同一字段不同值的数据的数量：<br>//如 CATEGORY 字段有1，2，3三个值，现要以CATEGORY为纬度计算每个值下有多少条数据：<br>var apply = {<br>    attributes: [‘CATEGORY’, [sequelize.fn(‘COUNT’, sequelize.col(‘CATEGORY’)), ‘COUNT’]],<br>    where:{<br>         APPLY_DEPARTMENT: 10000000<br>    }<br>    group:[‘CATEGORY’],<br>    raw:true<br>};</p>
+<p>// attributes 中，[‘字段’, [sequelize.fn(‘COUNT’,sequelize.col(‘字段名’)), ‘自定义的返回值的名称’]]<br>// 返回的结果为一个数组：[{CATEGORY:1,COUNT:7},{CATEGORY:2,COUNT:8},{CATEGORY:3,COUNT:9}]<br>// 无数据无不返回，如没有 CATEGORY为3的数据，则不返回{CATEGORY:3，COUNT:}</p>
+<p>NodeMailer:<br>auth中的user和发送邮件时的from保持一致，否则邮件无法发送</p>
+<p>Promise用法<br>给你一个承诺 - 玩转 AngularJS 的 Promise - AngularJS - SegmentFault<br>Using Promise:<br><a href="https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html" target="_blank" rel="noopener">https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html</a><br>Promise.all():<br>Promise.all()中参数为数组；<br><a href="http://bluebirdjs.com/docs/api/promise.all.html" target="_blank" rel="noopener">http://bluebirdjs.com/docs/api/promise.all.html</a><br>Promise.all()实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> allTask = [];</span><br><span class="line"><span class="keyword">var</span> updateDevSts = <span class="function"><span class="keyword">function</span> (<span class="params">newData,temptask</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(uTask(newData,temptask));</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="keyword">var</span> temptask = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (data[i].dataValues.TASK_STATUS !== <span class="number">2</span>) &#123;</span><br><span class="line">        data[i].dataValues.DEV_STATUS = <span class="number">3</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (data[i].dataValues.TASK_STATUS == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!data[i].dataValues.TEST_STARTDATE) &#123; <span class="comment">//developing</span></span><br><span class="line">            data[i].dataValues.DEV_STATUS = <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (!!data[i].dataValues.TEST_STARTDATE &amp;&amp; !data[i].dataValues.TEST_ENDDATE)&#123; <span class="comment">//testing</span></span><br><span class="line">            data[i].dataValues.DEV_STATUS = <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (!!data[i].dataValues.TEST_ENDDATE)&#123; <span class="comment">//test done</span></span><br><span class="line">            data[i].dataValues.DEV_STATUS = <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    temptask.where = &#123;<span class="attr">TASK_ID</span>:data[i].dataValues.TASK_ID&#125;;</span><br><span class="line">    temptask.fields = [<span class="string">'DEV_STATUS'</span>];</span><br><span class="line">    <span class="keyword">var</span> newData = &#123; <span class="attr">DEV_STATUS</span>: data[i].dataValues.DEV_STATUS&#125;;</span><br><span class="line">    allTask.push(</span><br><span class="line">        updateDevSts(newData,temptask).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> data;</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Promise</span>.all(allTask);</span><br></pre></td></tr></table></figure></p>
+<p>Express的牛逼文件上传插件Multer，并不支持中文显示，log里一定要写英文<br>Muler并不影响，记得把文件保存成UTF-8。</p>
+<p>Nodejs计算MD5：<br>对于字符串：<br>var crypto = require(‘crypto’);<br>var name = ‘I love Node.js’;<br>var hash = crypto.createHash(‘md5’).update(name).digest(“hex”);<br>console.log(hash);</p>
+<p>对于文件：<br>var crypto = require(‘crypto’);<br>var fs = require(‘fs’);</p>
+<p>// change the algo to sha1, sha256 etc according to your requirements<br>var algo = ‘md5’;<br>var shasum = crypto.createHash(algo);</p>
+<p>var file = ‘./kitten.jpg’; //file path<br>var s = fs.ReadStream(file);<br>s.on(‘data’, function(d) { shasum.update(d); });<br>s.on(‘end’, function() {<br>    var d = shasum.digest(‘hex’);<br>    console.log(d);<br>});</p>
+<p>使用pipe() 在 fs.createReadStream读取文件后返回res：<br>var readStream = fs.createReadStream(filename); //filename include filepath<br>readStream.on(‘open’, function () {<br>     res.json(…); //add parameters<br>     readStream.pipe(res);<br>});<br>readStream.on(‘error’, function(err) {<br>     res.end(err);<br>});</p>
+<p>删除文件：<br>fs.unlink(filename); //filename include filepath</p>
+<p>阻止执行sql时打印log:<br>var sequelize = new Sequelize(‘database’, ‘username’, ‘password’, {</p>
+<p>  // disable logging; default: console.log<br>  logging: false</p>
+<p>});<br><a href="https://stackoverflow.com/questions/28927836/prevent-sequelize-from-outputting-sql-to-the-console-on-execution-of-query" target="_blank" rel="noopener">https://stackoverflow.com/questions/28927836/prevent-sequelize-from-outputting-sql-to-the-console-on-execution-of-query</a></p>
+<p>JWT:（用户信息加密，登录验证等）<br>详细解释及使用：<a href="http://blog.csdn.net/congyihao/article/details/70197789" target="_blank" rel="noopener">http://blog.csdn.net/congyihao/article/details/70197789</a></p>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://www.eivlysblog.com/2018/06/27/node-install/" data-id="cjixbihdm00007fny3b2n2o7p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="http://www.eivlysblog.com/2018/08/20/node-server/" data-id="cjlkfa38q0000exnyr3ufoh1e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
-          <a href="http://www.eivlysblog.com/2018/06/27/node-install/#comments" class="article-comment-link"><i class="fa fa-comments"></i>Comments</a>
+          <a href="http://www.eivlysblog.com/2018/08/20/node-server/#comments" class="article-comment-link"><i class="fa fa-comments"></i>Comments</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Development/">Web Development</a></li></ul>
@@ -187,20 +172,10 @@ nvm <span class="keyword">alias</span> <span class="keyword">default</span> stab
     
 <nav id="article-nav">
   
-    <a href="/2018/06/30/GCP-env-initiate/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
-        
-          GCP配置及初级使用
-        
-      </p>
-      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
   
-  
-    <a href="/2018/05/13/es6-module/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/04/node-filesys/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">ECMAScript6模块化</p>
+      <p class="article-nav-title">NodeJS-文件读写增删监听操作</p>
       <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
     </a>
   
@@ -273,7 +248,7 @@ nvm <span class="keyword">alias</span> <span class="keyword">default</span> stab
 <script>
   var disqus_shortname = 'eivlysblog';
   
-  var disqus_url = 'http://www.eivlysblog.com/2018/06/27/node-install/';
+  var disqus_url = 'http://www.eivlysblog.com/2018/08/20/node-server/';
   
   (function(){
     var dsq = document.createElement('script');
