@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Typescript学习笔记 | EivlysBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Promise异步操作的对象。 三个状态：pending（初始状态），resolve（成功处理），reject（错误处理）；对象状态不受外界影响，pending之后为resolve或者reject状态，状态只会变更一次，且变更后不会更改； 返回的也是一个promise对象，因此需要then()来处理。then()可以接受三种形式的参数  then(fun1(), fun2()); then(fu">
+<meta name="keywords" content="Web Development">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typescript学习笔记">
+<meta property="og:url" content="http://www.eivlysblog.com/2018/10/02/promise/index.html">
+<meta property="og:site_name" content="EivlysBlog">
+<meta property="og:description" content="Promise异步操作的对象。 三个状态：pending（初始状态），resolve（成功处理），reject（错误处理）；对象状态不受外界影响，pending之后为resolve或者reject状态，状态只会变更一次，且变更后不会更改； 返回的也是一个promise对象，因此需要then()来处理。then()可以接受三种形式的参数  then(fun1(), fun2()); then(fu">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.eivlysblog.com/img/promise.png">
+<meta property="og:image" content="http://www.eivlysblog.com/img/promise-handler.png">
+<meta property="og:updated_time" content="2018-10-02T08:24:54.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Typescript学习笔记">
+<meta name="twitter:description" content="Promise异步操作的对象。 三个状态：pending（初始状态），resolve（成功处理），reject（错误处理）；对象状态不受外界影响，pending之后为resolve或者reject状态，状态只会变更一次，且变更后不会更改； 返回的也是一个promise对象，因此需要then()来处理。then()可以接受三种形式的参数  then(fun1(), fun2()); then(fu">
+<meta name="twitter:image" content="http://www.eivlysblog.com/img/promise.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Coding · Design · Ideas</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Code/">Code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IxD/">IxD</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.eivlysblog.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Code/">Code</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-promise" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Typescript学习笔记
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2018/10/02/promise/" class="article-date">
+  <time datetime="2018-10-02T08:04:17.000Z" itemprop="datePublished">2018-10-02</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="/img/promise.png" alt="Promise"></p>
+<h3 id="Promise">Promise</h3><p>异步操作的对象。</p>
+<p>三个状态：pending（初始状态），resolve（成功处理），reject（错误处理）；<br>对象状态不受外界影响，pending之后为resolve或者reject状态，状态只会变更一次，且变更后不会更改；</p>
+<p>返回的也是一个promise对象，因此需要then()来处理。<br>then()可以接受三种形式的参数</p>
+<ol>
+<li>then(fun1(), fun2());</li>
+<li>then(fun1());</li>
+<li>then(null, fun2()); 只用来处理reject</li>
+</ol>
+<p>then()里必须给一个返回值才能继续调用，否则返回undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123; <span class="built_in">console</span>.log(resolve)&#125;); </span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123; <span class="comment">//then处理返回的promise对象</span></span><br><span class="line">  alert(result);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">result</span> =&gt;</span> &#123; <span class="comment">//捕获异常</span></span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Promise处理流程及状态变化：<br><img src="/img/promise-handler.png" alt="Promise参数处理流"></p>
+<p>快速创建Promise对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = promis.resolve(‘aaa’);</span><br><span class="line"><span class="keyword">let</span> r = promise.reject(); <span class="comment">//拒绝状态的promise</span></span><br></pre></td></tr></table></figure></p>
+<p>Promise.all():一次处理多个promise对象，待所有对象处理完成后再进行后面的调用<br>promose.all()中参数只接受数组。如果数组中所有对象都是resolve，则promise.all()返回resolve；如果有一个对象是reject，则promise.all()返回reject。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="number">123</span>); </span><br><span class="line"><span class="keyword">let</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="string">'hello'</span>); </span><br><span class="line"><span class="keyword">let</span> p3 = <span class="built_in">Promise</span>.resolve(<span class="string">'success'</span>); </span><br><span class="line"><span class="keyword">let</span> p4 = <span class="built_in">Promise</span>.reject(<span class="string">'error’);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Promise.all([p1,p2,p4]).then(result =&gt; &#123; </span></span><br><span class="line"><span class="string">    console.log(result); </span></span><br><span class="line"><span class="string">&#125;).catch(result =&gt; &#123; </span></span><br><span class="line"><span class="string">    console.log(result); </span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure></p>
+<p>错误捕获：<br>promise抛出的错误外部try catch捕获不到，只能通过promise调用catch()来捕获，因此建议每个promise链尾部加上catch。</p>
+<h3 id="Async/await">Async/await</h3><p>与promise协同工作而不是相互替代，弱化了异步写法，看起来更像同步的方法。<br>async 放在函数前，将函数变为一个异步的对象，返回值不需要用promis来包裹，但其实是一个异步对象。async中也可以返回一个promise对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> f()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">async</span> f()&#123; </span><br><span class="line">    <span class="keyword">return</span> promise.resolve(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f.then( <span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result); <span class="comment">//1</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>await 等待返回结果后再继续执行<br>只能放在async函数体中使用，不能单独使用。await后跟着的是一个promise对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">sleep(time)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(time);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">let</span> result01 = <span class="keyword">await</span> sleep(<span class="number">100</span>); <span class="comment">//上一个await执行之后才会执行下一句 </span></span><br><span class="line">    <span class="keyword">let</span> result02 = <span class="keyword">await</span> sleep(result01 + <span class="number">100</span>); </span><br><span class="line">    <span class="keyword">let</span> result03 = <span class="keyword">await</span> sleep(result02 + <span class="number">100</span>); </span><br><span class="line">    <span class="keyword">return</span> result03; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">demo().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(result); </span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line">错误处理</span><br><span class="line">函数体内部用<span class="keyword">try</span>/<span class="keyword">catch</span>捕获，或者和promise一样通过<span class="keyword">catch</span>来捕获。</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">try</span> &#123; </span><br><span class="line">        <span class="keyword">let</span> result = <span class="keyword">await</span> p; </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e) &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(e); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">demo();</span><br></pre></td></tr></table></figure></p>
+<p>【引用及参考】<br><a href="https://javascript.info/promise-chaining" target="_blank" rel="noopener">https://javascript.info/promise-chaining</a><br><a href="https://blog.csdn.net/major_zhang/article/details/79154287" target="_blank" rel="noopener">https://blog.csdn.net/major_zhang/article/details/79154287</a><br><a href="https://segmentfault.com/a/1190000013292562?utm_source=channel-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013292562?utm_source=channel-newest</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.eivlysblog.com/2018/10/02/promise/" data-id="cjmrgk4bj0000pjnykjq9er9e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        
+          <a href="http://www.eivlysblog.com/2018/10/02/promise/#comments" class="article-comment-link"><i class="fa fa-comments"></i>Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-Development/">Web Development</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/Eivlys" target="_blank"><i class="icon fa fa-github"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/u/1898548721" target="_blank"><i class="icon fa fa-weibo"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google-plus" href="https://plus.google.com/u/0/106632066575977183873/about" target="_blank"><i class="icon fa fa-google-plus"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/vamcheryl" target="_blank"><i class="icon fa fa-twitter"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/20/node-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">NodeJS在服务端的实际应用及问题处理</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IxD/">IxD</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular-Material/">Angular Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Visualization/">Data Visualization</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GCP/">GCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HCI学习笔记/">HCI学习笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Product/">Product</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Development/">Web Development</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/交互设计/">交互设计</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原型设计/">原型设计</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/界面设计/">界面设计</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">tag cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular-Material/" style="font-size: 10px;">Angular Material</a> <a href="/tags/AngularJS/" style="font-size: 16.67px;">AngularJS</a> <a href="/tags/Data-Visualization/" style="font-size: 13.33px;">Data Visualization</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/HCI学习笔记/" style="font-size: 10px;">HCI学习笔记</a> <a href="/tags/NodeJS/" style="font-size: 16.67px;">NodeJS</a> <a href="/tags/Product/" style="font-size: 13.33px;">Product</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/Web-Development/" style="font-size: 20px;">Web Development</a> <a href="/tags/交互设计/" style="font-size: 16.67px;">交互设计</a> <a href="/tags/原型设计/" style="font-size: 13.33px;">原型设计</a> <a href="/tags/界面设计/" style="font-size: 10px;">界面设计</a>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2018 Eivlys</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'eivlysblog';
+  
+  var disqus_url = 'http://www.eivlysblog.com/2018/10/02/promise/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js"></script>
+  <script src="/scrollLoading/main.js"></script>
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
